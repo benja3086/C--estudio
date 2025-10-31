@@ -1,35 +1,47 @@
-﻿namespace ConsoleApp1
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ConsoleApp1
 {
-    public class Singleton
+    class Singleton
     {
 
-        private static Singleton _instance = null;
-        private Array Admin = "Benja","andres";
-        private Array Comun = Benja,andres;
-        -
-        public static Singleton GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new Singleton();
-            }
-            return _instance;
-        }
+        private static Singleton _instance;
+        private Comun[] nombre = [];
 
-        public string getNombre()
+
+        public static Singleton Instance
         {
-            return this.Nombre;
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Singleton();
+                }
+                return _instance;
+            }
         }
-        public void setNombre(string nuevoNombre, bool admin)
+        public void setUsuario(Comun nuevoNombre)
         {
-            Nombre = nuevoNombre;
-            
+            nombre = nombre.Append(nuevoNombre).ToArray();
         }
-        public void deleteNombre()
+        public Comun[] getUsuario()
         {
-            Nombre = "";
+            return nombre;
         }
+    }
+    public class Comun
+    {
+        public string nombre1 = "";
+        public string apellido = "";
+        public int edad = 0;
 
 
     }
+    //public void deleteNombre()
+    //{
+    //    Nombre = "";
+    //}
+
+
 }
+
